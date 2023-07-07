@@ -1,15 +1,21 @@
-name: Lint
-on: [push]
+name: Node.js CI
+
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [dev]
+
 jobs:
   build:
-    name: Strict Lint
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: install
 
-      - uses: borales/actions-yarn@v2.0.0
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
         with:
-          cmd: eslint:github-actions
+          node-version: "18.*"
+      - run: npm ci
+      - run: npm run build
+      - run: npm run lint
