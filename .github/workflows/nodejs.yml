@@ -1,0 +1,15 @@
+name: Lint
+on: [push]
+jobs:
+  build:
+    name: Strict Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install
+
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: eslint:github-actions

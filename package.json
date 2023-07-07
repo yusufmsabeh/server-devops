@@ -7,11 +7,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
+    "eslint": "^8.44.0",
     "nodemon": "^2.0.22"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "eslint:github-action": "node ./node_modules/eslint/bin/eslint --ignore-path .gitignore "
   },
   "keywords": [],
   "author": "",
