@@ -1,7 +1,8 @@
 name: Build and push production image
 
 on:
-  push: [main]
+  push:
+    branches: [main]
 
 jobs:
   push_to_registry:
