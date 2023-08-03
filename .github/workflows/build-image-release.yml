@@ -24,7 +24,7 @@ jobs:
 
       - name: Get the latest release version
         id: get_version
-        run: echo ::set-output name=version::${GITHUB_REF#refs/tags/}
+        run: echo ::set-output name=version::${GITHUB_REF#refs/heads/release}
 
       - name: Build and Push Docker image
         uses: docker/build-push-action@v2
