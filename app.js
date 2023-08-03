@@ -9,5 +9,5 @@ app.get("/hello", (req, res) => {
   res.status(200).end("hello User");
 });
 app.listen(3000, () => {
-  console.log("server now is running on port 3000");
+  console.log("server now is running on port 3000 ");
 });
