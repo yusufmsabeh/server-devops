@@ -24,7 +24,7 @@ jobs:
       - name: Format and Print String
         id: format-branch
         run: |
-          original_string= ${{steps.branch-details.outputs.branch}}
+          original_string="${{steps.branch-details.outputs.branch}}"
           formatted_string="v${original_string#release/}"
           echo "Original String: $original_string"
           echo "Formatted String: $formatted_string"
@@ -33,4 +33,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/app:v${{ steps.format-branch.formatted_string }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/app:${{ steps.format-branch.formatted_string }}
