@@ -21,10 +21,16 @@ jobs:
       - name: get branch details
         id: branch-details
         uses: ypicard/get-branch-name-github-action@v1
-
+      - name: Format and Print String
+        id: format-branch
+        run: |
+          original_string= ${{steps.branch-details.outputs.branch}}
+          formatted_string="v${original_string#release/}"
+          echo "Original String: $original_string"
+          echo "Formatted String: $formatted_string"
       - name: Build and Push Docker image
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/app:v${steps.branch-details.outputs.branch#release/}
+          tags: ${{ secrets.DOCKER_USERNAME }}/app:v${{ steps.format-branch.formatted_string }}
