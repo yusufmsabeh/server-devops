@@ -18,9 +18,13 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: get branch details
+        id: branch-details
+        uses: ypicard/get-branch-name-github-action@v1
+
       - name: Build and Push Docker image
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/app:${{ github.event.release.tag_name }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/app:${{ steps.branch-details.outputs.tag }}
