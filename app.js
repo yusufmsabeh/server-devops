@@ -1,15 +1,15 @@
 import express from "express";
 const app = express();
 
-app.get("/v1", (req, res) => {
+app.get("/v2", (req, res) => {
   res.status(200).end("hello");
 });
 
-app.get("/v1/hello", (req, res) => {
+app.get("/v2/hello", (req, res) => {
   res.status(200).end("hello User");
 });
 
-app.get("/v1/time", (req, res) => {
+app.get("/v2/time", (req, res) => {
   const now = new Date();
   res.status(200).end("hello User the time is " + now);
 });
