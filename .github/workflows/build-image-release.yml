@@ -27,4 +27,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/app:${{ steps.branch-details.outputs.tag }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/app:${{ steps.branch-details.outputs.branch }}
