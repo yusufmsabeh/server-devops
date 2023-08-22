@@ -24,4 +24,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/app:${{ github.event.release.name }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/app:${{ github.event.release.tag_name }}
